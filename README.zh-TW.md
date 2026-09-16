@@ -89,9 +89,14 @@ Keychain 就是這個 extension 的核心，所以上不了。Raycast 自己的 
 ```
 cd extensions/raycast-simple2fa
 npm install
-npm test          # vitest
-npm run build     # ray build -e dist -o build
+npm run lint       # eslint，然後 prettier --check
+npm run typecheck  # tsc --noEmit
+npm test           # vitest
+npm run build      # ray build -e dist -o build
 ```
+
+`npm run fix-lint` 會把前兩項能自動修的修掉。CI 在 macOS 上跑這五項，
+每次 push 到 `main` 跟每個 pull request 都會跑。
 
 TOTP 比對 RFC 6238 的 test vectors，SHA1、SHA256、SHA512 都有。Keychain 那層把
 `security` 的呼叫抽成可注入的參數，測試驗證組出來的參數，不動真的 Keychain。
