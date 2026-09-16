@@ -1,4 +1,4 @@
-import { Action, ActionPanel, Alert, Color, Icon, List, Toast, confirmAlert, showToast } from "@raycast/api";
+import { Action, ActionPanel, Alert, Color, Icon, Keyboard, List, Toast, confirmAlert, showToast } from "@raycast/api";
 import { useEffect, useState } from "react";
 import { StoredAccount, listAccounts, readSecret, removeAccount } from "./accounts";
 import { generateTotp, secondsRemaining } from "./totp";
@@ -89,14 +89,14 @@ export default function Command() {
                 <Action.Push
                   icon={Icon.Plus}
                   title="Add Account"
-                  shortcut={{ modifiers: ["cmd"], key: "n" }}
+                  shortcut={Keyboard.Shortcut.Common.New}
                   target={<AddAccount onAdded={load} />}
                 />
                 <Action
                   icon={Icon.Trash}
                   title="Remove Account"
                   style={Action.Style.Destructive}
-                  shortcut={{ modifiers: ["ctrl"], key: "x" }}
+                  shortcut={Keyboard.Shortcut.Common.Remove}
                   onAction={() => confirmRemove(entry)}
                 />
               </ActionPanel>

@@ -27,15 +27,21 @@
     "@raycast/api": "^1.80.0"
   },
   "devDependencies": {
+    "@raycast/eslint-config": "^2.2.0",
     "@types/node": "^22.0.0",
     "@types/react": "19.0.10",
+    "eslint": "^9.39.5",
+    "prettier": "^3.9.6",
     "typescript": "^5.5.0",
     "vitest": "^2.0.0"
   },
   "scripts": {
     "build": "ray build -e dist -o build",
     "dev": "ray develop",
-    "test": "vitest run"
+    "test": "vitest run",
+    "lint": "eslint . && prettier --check .",
+    "fix-lint": "eslint . --fix && prettier --write .",
+    "typecheck": "tsc --noEmit"
   },
   "repository": "https://github.com/TokuiNico/raycast-simple2fa"
 }

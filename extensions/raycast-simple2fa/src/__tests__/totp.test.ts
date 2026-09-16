@@ -4,7 +4,8 @@ import { base32Decode, generateTotp, secondsRemaining } from "../totp";
 // RFC 6238 Appendix B uses the ASCII seed "12345678901234567890".
 const SEED_SHA1 = "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ";
 const SEED_SHA256 = "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZA";
-const SEED_SHA512 = "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNA";
+const SEED_SHA512 =
+  "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNA";
 
 describe("base32Decode", () => {
   it("decodes RFC 4648 vectors", () => {
@@ -32,7 +33,9 @@ describe("generateTotp", () => {
   ];
 
   it.each(cases)("matches RFC 6238 SHA1 at t=%i", (seconds, expected) => {
-    expect(generateTotp({ secret: SEED_SHA1, digits: 8, period: 30, algorithm: "SHA1" }, seconds * 1000)).toBe(expected);
+    expect(generateTotp({ secret: SEED_SHA1, digits: 8, period: 30, algorithm: "SHA1" }, seconds * 1000)).toBe(
+      expected,
+    );
   });
 
   it("matches RFC 6238 SHA256 at t=59", () => {

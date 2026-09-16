@@ -53,10 +53,7 @@ export function generateTotp(params: TotpParams, now = Date.now()): string {
   const digest = createHmac(algorithm.toLowerCase(), base32Decode(params.secret)).update(message).digest();
   const offset = digest[digest.length - 1] & 0x0f;
   const binary =
-    ((digest[offset] & 0x7f) << 24) |
-    (digest[offset + 1] << 16) |
-    (digest[offset + 2] << 8) |
-    digest[offset + 3];
+    ((digest[offset] & 0x7f) << 24) | (digest[offset + 1] << 16) | (digest[offset + 2] << 8) | digest[offset + 3];
 
   return String(binary % 10 ** digits).padStart(digits, "0");
 }

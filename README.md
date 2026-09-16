@@ -92,9 +92,14 @@ Uninstalling the extension does not remove the Keychain items. See
 ```
 cd extensions/raycast-simple2fa
 npm install
-npm test          # vitest
-npm run build     # ray build -e dist -o build
+npm run lint       # eslint, then prettier --check
+npm run typecheck  # tsc --noEmit
+npm test           # vitest
+npm run build      # ray build -e dist -o build
 ```
+
+`npm run fix-lint` applies what the first two can fix on their own. CI runs all
+five on macOS for every push to `main` and every pull request.
 
 TOTP is checked against the RFC 6238 test vectors for SHA1, SHA256 and SHA512. The
 Keychain layer takes its `security` runner as an argument, so the tests assert on the

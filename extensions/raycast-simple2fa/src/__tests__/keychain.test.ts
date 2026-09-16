@@ -18,16 +18,7 @@ describe("createKeychain", () => {
     const runner = fakeRunner();
     await createKeychain(runner.run).set("github:alice", "JBSWY3DPEHPK3PXP");
     expect(runner.calls).toEqual([
-      [
-        "add-generic-password",
-        "-U",
-        "-s",
-        KEYCHAIN_SERVICE,
-        "-a",
-        "github:alice",
-        "-w",
-        "JBSWY3DPEHPK3PXP",
-      ],
+      ["add-generic-password", "-U", "-s", KEYCHAIN_SERVICE, "-a", "github:alice", "-w", "JBSWY3DPEHPK3PXP"],
     ]);
   });
 
