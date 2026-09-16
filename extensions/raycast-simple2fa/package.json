@@ -1,0 +1,41 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "raycast-simple2fa",
+  "title": "Simple 2FA",
+  "description": "Time-based one-time passwords, with the secrets kept in the macOS Keychain",
+  "icon": "command-icon.png",
+  "author": "chihyu",
+  "categories": [
+    "Security"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "list-codes",
+      "title": "2FA Codes",
+      "description": "Show current codes and copy one to the clipboard",
+      "mode": "view"
+    },
+    {
+      "name": "add-account",
+      "title": "Add 2FA Account",
+      "description": "Store a new authenticator secret in the Keychain",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.80.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "19.0.10",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  },
+  "scripts": {
+    "build": "ray build -e dist -o build",
+    "dev": "ray develop",
+    "test": "vitest run"
+  },
+  "repository": "https://github.com/TokuiNico/raycast-simple2fa"
+}
